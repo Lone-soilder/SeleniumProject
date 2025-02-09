@@ -34,7 +34,7 @@ public class SubmitOrder {
 		WebDriver driver = new ChromeDriver(chromeOptions);
 		
 		
-		String productName = "ZARA COAT 3";
+		String productName = "Banarsi Saree";
 		//implicit wait
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -44,10 +44,15 @@ public class SubmitOrder {
 		landingPage.goTo();
 		
 		//product catalog page
-		ProductCatalogue productCatalogue = landingPage.loginApplication("anshika@gmail.com","Iamking@0000");
+		ProductCatalogue productCatalogue = landingPage.loginApplication("biswajitsahoo2320@gmail.com","@Kunu7381");
 		
 		
 		List<WebElement> products = productCatalogue.getProductList();
+		
+		WebElement prod =  products.stream().filter(product -> product.findElement(By.cssSelector("b")).getText().equalsIgnoreCase(productName)).findFirst().orElse(null);
+		
+		//product.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
+		
 		
 		productCatalogue.addProductToCart(productName);
 		
