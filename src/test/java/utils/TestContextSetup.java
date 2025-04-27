@@ -6,6 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 import PageObjects.PageObjectManager;
 
+//Central holder of everything to share across step definitions
+//TestContextSetup → uses TestBase to create driver
+//TestContextSetup → uses PageObjectManager to give you page objects (SignUp, Login, etc.)
+
 public class TestContextSetup {
 	
 	public WebDriver driver;
@@ -14,7 +18,9 @@ public class TestContextSetup {
 	
 	public TestContextSetup() throws IOException{
 		testBase = new TestBase();
-		pageObjectManager = new PageObjectManager(testBase.WebDrivermanager());
+		WebDriver driver = testBase.WebDrivermanager();
+		System.out.println("driver is initialized " + driver);
+			pageObjectManager = new PageObjectManager(driver);
 		
 		
 	}
