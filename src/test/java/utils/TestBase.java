@@ -3,26 +3,33 @@ package utils;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
-
-//the factory that creates the WebDriver tool
-//Creates and configures WebDriver
 
 public class TestBase {
-	
-	WebDriver driver ; 
-	
-	public WebDriver WebDrivermanager() {
-		if(driver == null) {
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			System.out.print("Driver created by testBase is "+driver);
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			driver.get("https://automationexercise.com/");
-			
+
+	private static WebDriver driver;
+
+
+	// Singleton pattern to ensure only one instance of WebDriver is created
+	public WebDriver getDriver(String browserName) {
+		System.out.println("getDriver is calling to browser name is "+ browserName);
+		driver = WebDriverFactory.setUpDriver(browserName);
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		driver.get("https://automationexercise.com/");
+		return driver; // Return the driver instance
+	}
+
+	public WebDriver getDriverInstance() {
+		if (driver == null) {
+			driver = getDriver("chrome");
 		}
 		return driver;
+	}
+
+	public void quitDriver() {
+		if (driver != null) {
+			driver.quit();
+			driver = null;
+		}
 	}
 }

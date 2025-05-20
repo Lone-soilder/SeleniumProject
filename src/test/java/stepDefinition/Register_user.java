@@ -88,7 +88,7 @@ public class Register_user {
   	    System.out.println(message);
   	    
   	    if(message.contains("DELETED")) {
-  	    	testContextSetup.driver.quit();
+  	    	testContextSetup.closeDriver();
   	    }
   	}
   	

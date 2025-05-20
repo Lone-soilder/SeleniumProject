@@ -18,11 +18,13 @@ public class TestContextSetup {
 	
 	public TestContextSetup() throws IOException{
 		testBase = new TestBase();
-		WebDriver driver = testBase.WebDrivermanager();
+		WebDriver driver = testBase.getDriverInstance();
 		System.out.println("driver is initialized " + driver);
-			pageObjectManager = new PageObjectManager(driver);
-		
-		
+		pageObjectManager = new PageObjectManager(driver);
 	}
-	
+
+	public void closeDriver() {
+		testBase.quitDriver();
+		System.out.println("driver is closed");
+	}
 }

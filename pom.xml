@@ -39,7 +39,7 @@
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
-    <version>4.28.1</version>
+    <version>4.32.0</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
@@ -56,11 +56,36 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-    	<groupId>Lone-soilder</groupId>
-    	<artifactId>Automation_Selenium_cucumber</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
+
+      <!-- Cucumber TestNG -->
+      <dependency>
+          <groupId>io.cucumber</groupId>
+          <artifactId>cucumber-testng</artifactId>
+          <version>7.14.0</version> <!-- Use the latest version -->
+          <scope>test</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>io.cucumber</groupId>
+          <artifactId>cucumber-java</artifactId>
+          <version>7.14.0</version>
+          <scope>test</scope>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+      <dependency>
+          <groupId>org.apache.poi</groupId>
+          <artifactId>poi</artifactId>
+          <version>5.4.1</version>
+      </dependency>
+      <!-- Apache POI for .xlsx files (XSSF) -->
+      <dependency>
+          <groupId>org.apache.poi</groupId>
+          <artifactId>poi-ooxml</artifactId>
+          <version>5.2.5</version>
+      </dependency>
+
+
   </dependencies>
 
   <build>
